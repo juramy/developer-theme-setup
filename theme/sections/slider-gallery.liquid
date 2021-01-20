@@ -1,0 +1,91 @@
+<div class="gdc-gallery">
+    <div class="gdc-gallery__header">
+    <h4>
+        <a id="js-gallery__btn--back" 
+            class="gallery-btn" onclick="handleScrollButtonClick('left')"  
+            aria-label="Click to scroll blog postings right.">&lang;</a>
+            {{ section.settings.header }}
+        <a id="js-gallery__btn--forward" class="gallery-btn" 
+            onclick="handleScrollButtonClick('right')" 
+            aria-label="Click to scroll blog postings left.">&rang;</a>
+    </h4>
+    </div>
+
+    <div class="gdc-gallery__images js-gallery-images" id="GalleryLoop">
+    {% for block in section.blocks %}
+        <picture>
+            {% if block.settings.image  %}
+            <a href="{% if block.settings.image_url != blank %} {{ block.settings.image_url }}{% endif %}" target="_blank">
+                <img class="gdc-gallery__image" src="{{ block.settings.image | img_url: '500x' }}">
+            </a>                          
+            {% endif %}
+        </picture>
+    {% endfor %}
+    </div>
+</div>
+
+{% style %}
+
+.gdc-gallery__header h4 {
+    color: {{ section.settings.header_color }};
+}
+
+.gdc-gallery__images picture {   
+    min-width: calc(100vw / {{ section.settings.image_count }});       
+    height: 40vh;
+}
+
+{% endstyle %}
+
+{% schema %}
+    {
+        "name": "Custom Image Gallery",
+        "settings": [
+        {
+            "type": "text",
+            "id": "header",
+            "label": "Section Header"
+        },
+        {
+            "type": "color",
+            "id": "header_color",
+            "label": "Header Color"
+        },
+        {
+            "type": "range",
+            "id": "image_count",
+            "min": 1,
+            "max": 7,
+            "step": 1,
+            "label": "Visible Images",
+            "default": 7
+        }
+    ],
+      "blocks": [
+    {
+        "type": "gallery_image",
+        "name": "Gallery Image",
+        "settings": [
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "text",
+            "id": "image_url",
+            "label": "Image Url",
+            "info": "When image is clicked - go to this link."
+        }
+        ]
+    }
+    ],
+    "presets": [
+        {
+        "name": "Custom Image Gallery",    
+        "category": "Image",
+        "settings": {}
+        }
+    ]
+    }
+{% endschema %}
