@@ -8,6 +8,12 @@
 @import './tools/mixins';
 @import './tools/functions';
 
+// Sections
+@import './sections/blog-posts';
+@import './sections/collection-list';
+@import './sections/featured-collection';
+@import './sections/image-with-text';
+
 @import "global/forms.scss";
 @import "global/helpers.scss";
 @import "global/layout.scss";
@@ -23,3 +29,4 @@
 @import "components/placeholders.scss";
 @import "components/responsive-images.scss";
 @import "components/slider-gallery.scss";
+@import "components/slideshow.scss";

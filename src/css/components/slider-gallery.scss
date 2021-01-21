@@ -1,9 +1,9 @@
 .gdc-gallery {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     text-align: center;
     width: 100vw;
-    background: #333;
+    background: rgb(106, 115, 153);
 }
 
 .gdc-gallery__header {
