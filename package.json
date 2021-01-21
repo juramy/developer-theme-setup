@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint -c eslint.json src/**/*.js",
+    "lint:fix": "eslint -c eslint.json src/**/*.js --fix",
     "build": "webpack",
     "deploy": "NODE_ENV=production webpack  && theme deploy --dir=theme",
     "watch:assets": "webpack --watch",
@@ -22,7 +24,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "core-js": "^3.8.3",
     "css-loader": "^5.0.1",
-    "eslint": "^6.0.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
